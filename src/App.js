@@ -1,4 +1,5 @@
 import React from 'react'
+import Book from './components/Book.js'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 
@@ -24,7 +25,8 @@ class BooksApp extends React.Component {
   render() {
     console.log(this.state.books)
     console.log(this.state.books[0])
-    return (
+    if (this.state.books.length === 0) return (  <div className="app">No Books</div> )
+    else return (
       <div className="app">
         {this.state.showSearchPage ? (
           <div className="search-books">
@@ -58,12 +60,13 @@ class BooksApp extends React.Component {
                   <h2 className="bookshelf-title">Currently Reading</h2>
                   <div className="bookshelf-books">
                     <ol className="books-grid">
-                      <li>
+                      <Book />
+                      /*<li>
                         <div className="book">
                           <div className="book-top">
                             <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${this.state.books[0].imageLinks.smallThumbnail})` }}></div>
                             <div className="book-shelf-changer">
-                              <select>
+                              <select defaultValue={this.state.books[0].shelf}>
                                 <option value="move" disabled>Move to...</option>
                                 <option value="currentlyReading">Currently Reading</option>
                                 <option value="wantToRead">Want to Read</option>
@@ -72,10 +75,10 @@ class BooksApp extends React.Component {
                               </select>
                             </div>
                           </div>
-                          <div className="book-title">To Kill a Mockingbird</div>
-                          <div className="book-authors">Harper Lee</div>
+                          <div className="book-title">{this.state.books[0].title}</div>
+                          <div className="book-authors">{this.state.books[0].authors}</div>
                         </div>
-                      </li>
+                      </li>*/
                       <li>
                         <div className="book">
                           <div className="book-top">
