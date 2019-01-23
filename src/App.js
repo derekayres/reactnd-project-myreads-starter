@@ -7,6 +7,7 @@ class BooksApp extends React.Component {
   state = {
       books: []
   };
+
   componentDidMount() {
     BooksAPI.getAll().then((books) => {
       this.setState({
@@ -22,7 +23,17 @@ class BooksApp extends React.Component {
      */
     //showSearchPage: false
 
-
+  onShelfChange(book, newShelf) {
+    const newBooks = this.state.books.map(currBook => {
+      if (currBook === book) {
+        currBook.shelf = newShelf;
+      }
+      return currBook;
+    });
+    this.setState({
+      books: newBooks
+    });
+  }
 
   render() {
     const books = this.state.books
@@ -67,7 +78,7 @@ class BooksApp extends React.Component {
                     <ol className="books-grid">
                     {currentlyReading.map(book => {
                       return (
-                        <Book book={book} key={book.id} />
+                        <Book book={book} key={book.id} shelfChange={this.onShelfChange.bind(this)} />
                       );
                     })}
                     </ol>
@@ -79,7 +90,7 @@ class BooksApp extends React.Component {
                     <ol className="books-grid">
                     {wantToRead.map(book => {
                       return (
-                        <Book book={book} key={book.id} />
+                        <Book book={book} key={book.id} shelfChange={this.onShelfChange.bind(this)} />
                       );
                     })}
                     </ol>
@@ -91,7 +102,7 @@ class BooksApp extends React.Component {
                     <ol className="books-grid">
                     {read.map(book => {
                       return (
-                        <Book book={book} key={book.id} />
+                        <Book book={book} key={book.id} shelfChange={this.onShelfChange.bind(this)} />
                       );
                     })}
                     </ol>
