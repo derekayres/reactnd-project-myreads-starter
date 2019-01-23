@@ -23,7 +23,9 @@ class BooksApp extends React.Component {
      */
     //showSearchPage: false
 
-    onShelfChange(book, newShelf) {
+
+
+    /*onShelfChange(book, newShelf) {
       const newBooks = this.state.books.map(currBook => {
         if (currBook === book) {
           currBook.shelf = newShelf;
@@ -34,6 +36,22 @@ class BooksApp extends React.Component {
         books: newBooks
       });
     }
+    */
+
+    onSelfChange(book, newShelf) {
+      BooksAPI.update(book, newShelf);
+      const newBooks = this.state.books.filter(currBook => {
+        return currBook.id !== book.id
+        return newBooks;
+      });
+      book.shelf = newShelf;
+      newBooks.push(book);
+      this.setState({
+        books: newBooks
+      });
+    }
+
+
 
   render() {
     const books = this.state.books
@@ -78,7 +96,7 @@ class BooksApp extends React.Component {
                     <ol className="books-grid">
                     {currentlyReading.map(book => {
                       return (
-                        <Book book={book} key={book.id} shelfChange={this.onShelfChange.bind(this)} />
+                        <Book book={book} key={book.id} shelfChange={this.onShelfChange} />
                       );
                     })}
                     </ol>
@@ -90,7 +108,7 @@ class BooksApp extends React.Component {
                     <ol className="books-grid">
                     {wantToRead.map(book => {
                       return (
-                        <Book book={book} key={book.id} shelfChange={this.onShelfChange.bind(this)} />
+                        <Book book={book} key={book.id} shelfChange={this.onShelfChange} />
                       );
                     })}
                     </ol>
@@ -102,7 +120,7 @@ class BooksApp extends React.Component {
                     <ol className="books-grid">
                     {read.map(book => {
                       return (
-                        <Book book={book} key={book.id} shelfChange={this.onShelfChange.bind(this)} />
+                        <Book book={book} key={book.id} shelfChange={this.onShelfChange} />
                       );
                     })}
                     </ol>
