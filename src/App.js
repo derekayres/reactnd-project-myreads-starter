@@ -1,5 +1,8 @@
 import React from 'react'
 import Book from './components/Book'
+import { Link } from 'react-router-dom'
+import { Route } from 'react-router-dom'
+import SearchBooks from './components/searchBooks'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 
@@ -38,11 +41,11 @@ class BooksApp extends React.Component {
     }
     */
 
-    onSelfChange(book, newShelf) {
+    onShelfChange = (book, newShelf) => {
       BooksAPI.update(book, newShelf);
       const newBooks = this.state.books.filter(currBook => {
         return currBook.id !== book.id
-        return newBooks;
+        //return newBooks
       });
       book.shelf = newShelf;
       newBooks.push(book);
@@ -62,7 +65,7 @@ class BooksApp extends React.Component {
     if (this.state.books.length === 0) return (  <div className="app">No Books</div> )
     else return (
       <div className="app">
-        {this.state.showSearchPage ? (
+        <Route path="/search" render={() => (
           <div className="search-books">
             <div className="search-books-bar">
               <button className="close-search" onClick={() => this.setState({ showSearchPage: false })}>Close</button>
@@ -83,7 +86,8 @@ class BooksApp extends React.Component {
               <ol className="books-grid"></ol>
             </div>
           </div>
-        ) : (
+        )}/>
+        <Route exact path="/" render={() => (
           <div className="list-books">
             <div className="list-books-title">
               <h1>MyReads</h1>
@@ -129,10 +133,11 @@ class BooksApp extends React.Component {
               </div>
             </div>
             <div className="open-search">
-              <button onClick={() => this.setState({ showSearchPage: true })}>Add a book</button>
+              <Link to="/search">Add a book</Link>
             </div>
           </div>
-        )}
+        )}/>
+        <SearchBooks/>
       </div>
     )
   }
