@@ -2,8 +2,11 @@ import React, { Component } from 'react'
 import Book from './Book'
 import { Link } from 'react-router-dom'
 
+
+
 class HomePage extends Component {
   render() {
+    shelfChange = this.props.shelfChange
     const books = this.props.books
     const currentlyReading = books.filter( book => book.shelf  === 'currentlyReading')
     const wantToRead = books.filter( book => book.shelf  === 'wantToRead')
