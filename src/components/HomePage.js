@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
-import Book from './components/Book'
+import Book from './Book'
 import { Link } from 'react-router-dom'
 
 class HomePage extends Component {
   render() {
+    const books = this.props.books
+    const currentlyReading = books.filter( book => book.shelf  === 'currentlyReading')
+    const wantToRead = books.filter( book => book.shelf  === 'wantToRead')
+    const read = books.filter( book => book.shelf  === 'read')
     return (
       <div className="list-books">
         <div className="list-books-title">

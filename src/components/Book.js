@@ -8,8 +8,6 @@ class Book extends Component {
     }
 
   render() {
-    //this.props.book
-    //console.log(this.props.king) //"peter"
     return (
       <li>
         <div className="book">
