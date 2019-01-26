@@ -53,7 +53,7 @@ updatebooksSearch = (query) => {
             {
               this.state.booksSearch.map(booksSearch => (
 
-                  <Book book={booksSearch} key={booksSearch.id}/>
+                  <Book book={booksSearch} key={booksSearch.id} shelfChange={this.props.onShelfChange}/>
               ))
             }
           </ol>
