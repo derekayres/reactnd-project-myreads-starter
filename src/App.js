@@ -32,14 +32,21 @@ class BooksApp extends React.Component {
     }
 
   render() {
-    if (this.state.books.length === 0) return (  <div className="app">No Books</div> )
-    else return (
+    /*if (this.state.books.length === 0) return (  <div className="app">No Books</div> )
+    else*/
+
+    return (
       <div className="app">
-        <Route path="/search" render={() => (
-          <SearchBooks shelfChange={this.onShelfChange} />
-        )}/>
         <Route exact path="/" render={() => (
-          <HomePage books={this.state.books} shelfChange={this.onShelfChange}/>
+          <HomePage
+          books={this.state.books}
+          shelfChange={this.onShelfChange}
+          />
+        )}/>
+        <Route path="/search" render={() => (
+          <SearchBooks
+          shelfChange={this.onShelfChange}
+          />
         )}/>
       </div>
     )

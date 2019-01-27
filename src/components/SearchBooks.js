@@ -49,14 +49,14 @@ updatebooksSearch = (query) => {
         </div>
         <div className="search-books-results">
 
-          <ol className="books-grid">
-            {
-              this.state.booksSearch.map(booksSearch => (
+        <ol className="books-grid">
+          {
+            this.state.booksSearch.map(booksSearch => (
 
-                  <Book book={booksSearch} key={booksSearch.id} shelfChange={this.props.onShelfChange}/>
-              ))
-            }
-          </ol>
+                <Book book={booksSearch} key={booksSearch.id} shelfChange={this.props.onShelfChange}/>
+            ))
+          }
+        </ol>
 
         </div>
       </div>

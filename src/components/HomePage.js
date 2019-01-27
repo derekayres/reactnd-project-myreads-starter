@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom'
 
 class HomePage extends Component {
   render() {
-    //const shelfChange = this.props.shelfChange
     const books = this.props.books
     const currentlyReading = books.filter( book => book.shelf  === 'currentlyReading')
     const wantToRead = books.filter( book => book.shelf  === 'wantToRead')
@@ -24,7 +23,10 @@ class HomePage extends Component {
                 <ol className="books-grid">
                 {currentlyReading.map(book => {
                   return (
-                    <Book book={book} key={book.id} shelfChange={this.props.shelfChange} />
+                    <Book book={book}
+                    key={book.id}
+                    shelfChange={this.props.shelfChange}
+                    />
                   );
                 })}
                 </ol>
@@ -36,7 +38,10 @@ class HomePage extends Component {
                 <ol className="books-grid">
                 {wantToRead.map(book => {
                   return (
-                    <Book book={book} key={book.id} shelfChange={this.props.shelfChange} />
+                    <Book book={book}
+                    key={book.id}
+                    shelfChange={this.props.shelfChange}
+                    />
                   );
                 })}
                 </ol>
@@ -48,7 +53,11 @@ class HomePage extends Component {
                 <ol className="books-grid">
                 {read.map(book => {
                   return (
-                    <Book book={book} key={book.id} shelfChange={this.props.shelfChange} />
+                    <Book
+                    book={book}
+                    key={book.id}
+                    shelfChange={this.props.shelfChange}
+                    />
                   );
                 })}
                 </ol>
