@@ -32,8 +32,8 @@ class BooksApp extends React.Component {
     }
 
   render() {
-    /*if (this.state.books.length === 0) return (  <div className="app">No Books</div> )
-    else*/
+    if (this.state.books.length === 0) return (  <div className="app">No Books</div> )
+    else
 
     return (
       <div className="app">
