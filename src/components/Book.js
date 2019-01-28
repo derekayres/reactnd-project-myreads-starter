@@ -9,12 +9,16 @@ class Book extends Component {
 
   render() {
 
+  if (this.props.books !== undefined) {
     const assignSearchShelf = this.props.books.filter(book => {
       if (book.id === this.props.book.id) {
         return book
       }
-      console.log (assignSearchShelf)
     })
+    console.log (assignSearchShelf)
+  }
+
+
 
     let displayedThumbnail = this.props.book.imageLinks ?
     this.props.book.imageLinks.thumbnail : '';
