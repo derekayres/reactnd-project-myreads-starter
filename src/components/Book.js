@@ -9,14 +9,22 @@ class Book extends Component {
 
   render() {
 
-  if (this.props.books !== undefined) {
-    const assignSearchShelf = this.props.books.filter(book => {
-      if (book.id === this.props.book.id) {
-        return book
+    if (this.props.books !== undefined) {
+      const matchingBook = this.props.books.filter(book => {
+        if (book.id === this.props.book.id) {
+            return book
+          }
+        })
+          this.props.book.shelf =
+
+          matchingBook.length > 0 ?
+          matchingBook[0].shelf : 'none'
       }
-    })
-    console.log (assignSearchShelf)
-  }
+      console.log (matchingBook)
+
+    }
+
+
 
 
 
@@ -44,5 +52,6 @@ class Book extends Component {
     )
   }
 }
+
 
 export default Book
