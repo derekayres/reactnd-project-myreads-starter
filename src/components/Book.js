@@ -8,28 +8,17 @@ class Book extends Component {
     }
 
   render() {
-
     if (this.props.books !== undefined) {
-      const matchingBook = this.props.books.filter(book => {
-        if (book.id === this.props.book.id) {
-            return book
-          }
-        })
+      const matchingBook = this.props.books.filter(book =>
+        book.id === this.props.book.id)
           this.props.book.shelf =
-
           matchingBook.length > 0 ?
-          matchingBook[0].shelf : 'none'
+          matchingBook[0].shelf : 'none';
       }
-      console.log (matchingBook)
-
-    }
-
-
-
-
 
     let displayedThumbnail = this.props.book.imageLinks ?
     this.props.book.imageLinks.thumbnail : '';
+
     return (
       <li>
         <div className="book">
